@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hall xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="Hall.xsd">
+  <category name="1">   
+    <row name ="1">     
+      <seat>1</seat>
+      <seat>2</seat>
+      <seat>3</seat>
+      <seat>4</seat>
+      <seat>5</seat>
+      <seat>6</seat>
+      <seat>7</seat>
+      <seat>8</seat>
+      <seat>9</seat>
+      <seat>10</seat>
+    </row>
+    <row name ="2">
+      <seat>1</seat>
+      <seat>2</seat>
+      <seat>3</seat>
+      <seat>4</seat>
+      <seat>5</seat>
+      <seat>6</seat>
+      <seat>7</seat>
+      <seat>8</seat>
+      <seat>9</seat>
+      <seat>10</seat>
+    </row>
+    <row name ="3">
+      <seat>1</seat>
+      <seat>2</seat>
+      <seat>3</seat>
+      <seat>4</seat>
+      <seat>5</seat>
+      <seat>6</seat>
+      <seat>7</seat>
+      <seat>8</seat>
+      <seat>9</seat>
+      <seat>10</seat>
+    </row>
+    <row name ="4">
+      <seat>1</seat>
+      <seat>2</seat>
+      <seat>3</seat>
+      <seat>4</seat>
+      <seat>5</seat>
+      <seat>6</seat>
+      <seat>7</seat>
+      <seat>8</seat>
+      <seat>9</seat>
+      <seat>10</seat>
+    </row>
+    <row name ="5">
+      <seat>1</seat>
+      <seat>2</seat>
+      <seat>3</seat>
+      <seat>4</seat>
+      <seat>5</seat>
+      <seat>6</seat>
+      <seat>7</seat>
+      <seat>8</seat>
+      <seat>9</seat>
+      <seat>10</seat>
+    </row>
+  </category>
+  <category name="2">
+    <row name ="6">
+      <seat>6</seat>
+      <seat>7</seat>
+      <seat>8</seat>
+      <seat>9</seat>
+      <seat>10</seat>
+      <seat>11</seat>
+      <seat>12</seat>
+      <seat>13</seat>
+      <seat>14</seat>
+      <seat>15</seat>
+    </row>
+    <row name ="7">
+      <seat>6</seat>
+      <seat>7</seat>
+      <seat>8</seat>
+      <seat>9</seat>
+      <seat>10</seat>
+      <seat>11</seat>
+      <seat>12</seat>
+      <seat>13</seat>
+      <seat>14</seat>
+      <seat>15</seat>
+    </row>
+    <row name ="8">
+      <seat>6</seat>
+      <seat>7</seat>
+      <seat>8</seat>
+      <seat>9</seat>
+      <seat>10</seat>
+      <seat>11</seat>
+      <seat>12</seat>
+      <seat>13</seat>
+      <seat>14</seat>
+      <seat>15</seat>
+    </row>
+    <row name ="9">
+      <seat>6</seat>
+      <seat>7</seat>
+      <seat>8</seat>
+      <seat>9</seat>
+      <seat>10</seat>
+      <seat>11</seat>
+      <seat>12</seat>
+      <seat>13</seat>
+      <seat>14</seat>
+      <seat>15</seat>
+    </row>
+    <row name ="10">
+      <seat>6</seat>
+      <seat>7</seat>
+      <seat>8</seat>
+      <seat>9</seat>
+      <seat>10</seat>
+      <seat>11</seat>
+      <seat>12</seat>
+      <seat>13</seat>
+      <seat>14</seat>
+      <seat>15</seat>
+    </row>
+  </category>
+  <category name="3">
+    <row name ="6">
+      <seat>1</seat>
+      <seat>2</seat>
+      <seat>3</seat>
+      <seat>4</seat>
+      <seat>5</seat>
+      <seat>16</seat>
+      <seat>17</seat>
+      <seat>18</seat>
+      <seat>19</seat>
+      <seat>20</seat>
+    </row>
+    <row name ="7">
+      <seat>1</seat>
+      <seat>2</seat>
+      <seat>3</seat>
+      <seat>4</seat>
+      <seat>5</seat>
+      <seat>16</seat>
+      <seat>17</seat>
+      <seat>18</seat>
+      <seat>19</seat>
+      <seat>20</seat>
+    </row>
+    <row name ="8">
+      <seat>1</seat>
+      <seat>2</seat>
+      <seat>3</seat>
+      <seat>4</seat>
+      <seat>5</seat>
+      <seat>16</seat>
+      <seat>17</seat>
+      <seat>18</seat>
+      <seat>19</seat>
+      <seat>20</seat>
+    </row>
+    <row name ="9">
+      <seat>1</seat>
+      <seat>2</seat>
+      <seat>3</seat>
+      <seat>4</seat>
+      <seat>5</seat>
+      <seat>16</seat>
+      <seat>17</seat>
+      <seat>18</seat>
+      <seat>19</seat>
+      <seat>20</seat>
+    </row>
+    <row name ="10">
+      <seat>1</seat>
+      <seat>2</seat>
+      <seat>3</seat>
+      <seat>4</seat>
+      <seat>5</seat>
+      <seat>16</seat>
+      <seat>17</seat>
+      <seat>18</seat>
+      <seat>19</seat>
+      <seat>20</seat>
+    </row>
+  </category>
+</hall>

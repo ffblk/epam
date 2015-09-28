@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/_Layout.cshtml";
+}
+<h2>@Resources.Resource.Enter</h2>
+@using (Html.BeginForm("Login", "Account", FormMethod.Post))
+{
+    if (ViewBag.uName != "" && ViewBag.uName != null)
+    {
+        <p style="color : red;">@Resources.Resource.ErrorReg</p>
+    }   
+<table>
+    <tr>
+        <td>@Resources.Resource.Name</td>
+        <td><input type="text" name="uname" value="@ViewBag.uName" /></td>
+    </tr> 
+    <tr>
+        <td>@Resources.Resource.Password</td>
+        <td><input type="password" name="upass" /></td>
+    </tr> 
+    <tr>
+        <td colspan="2"><input type="submit" value= @Resources.Resource.Login /></td>
+    </tr> 
+</table>
+}

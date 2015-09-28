@@ -1,0 +1,58 @@
+﻿@using Cinema.Models;
+<!DOCTYPE html>
+<html>
+<head>       
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/themes/base/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div style="text-align :right;">
+        <table align="right" width="100%" style="white-space: nowrap;">
+            <tr>
+                <td width="100%"></td>
+                <td>@Html.ActionLink("English", "ChangeCulture", "Data",new { lang = "en", returnUrl = this.Request.RawUrl }, null)</td>
+                <td>@Html.ActionLink("Русский", "ChangeCulture", "Data",new { lang = "ru", returnUrl = this.Request.RawUrl }, null)</td>
+            </tr>
+        </table>
+        <table align="right" width="100%" style="white-space: nowrap;">
+            <tr>            
+                <td width="100%"></td>
+                    @if (Session["role"] != null)
+                    {
+                    <td>@((RolesUser)Session["role"]) : @Session["User"] </td>                  
+                        if ((Session["role"] as int?) == 2)
+                        { 
+                            <td>@Html.ActionLink(@Resources.Resource.AllOrders, "ShowOrders", "Data") </td>
+                        }
+                        if ((Session["role"] as int?) == 0)
+                        { 
+                            <td>
+                                @Html.ActionLink(@Resources.Resource.MyOrders, "MyOrders", "Account")
+                            </td>
+                        }
+                    }
+                    else
+                    {
+                        <td>@Html.ActionLink(@Resources.Resource.Login, "Login", "Account") </td>
+                        <td>@Html.ActionLink(@Resources.Resource.Register, "Create", "Account") </td>
+                    }      
+                <td>@Html.ActionLink(@Resources.Resource.Home, "Index", "Data")</td>   
+                @if (Session["User"] != null)                    {
+                   
+                    <td> @Html.ActionLink(@Resources.Resource.Logout, "Logout", "Data") </td>
+                }
+            </tr>
+        </table>
+    </div>
+    <div>
+        @RenderBody() 
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryui")
+        @Scripts.Render("~/bundles/Dialog")
+        @RenderSection("scripts", required: false)
+    </div>
+    <div class="footer" text-align="center">@Resources.Resource.Footer</div>
+</body>
+</html>

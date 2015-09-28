@@ -1,0 +1,68 @@
+﻿@using Cinema.Models
+@{
+    ViewBag.Title = "ShowOrders";
+    Layout = "~/Views/_Layout.cshtml";
+    string name ="";
+}
+
+<h2>@Resources.Resource.MyOrders</h2>
+<script type="text/javascript">
+    function OnConfirm(id) {
+        var ff = id;
+        if (confirm('@Resources.Resource.CancelOrderQ')) 
+        {
+            var dummyurl = '@Url.Action("MyOrders", new {ID = "sdsdsd"})';
+            dummyurl = dummyurl.replace("sdsdsd", id);
+            location.href = dummyurl;
+            return true;}
+        return false;
+}
+</script>
+<table width ="100%" >
+    @if (ViewBag.MyOrders != null )
+    {
+    <th>@Resources.Resource.Film</th>
+        <th>@Resources.Resource.Dates</th>
+        <th colspan="2">@Resources.Resource.Seats</th>
+        <th>@Resources.Resource.Price</th>
+        <th>@Resources.Resource.Status</th>
+
+    foreach (ListMyOrder e in ViewBag.MyOrders)
+        {
+            
+    <tr>    
+        @if(name != e.NamePlays)    {
+        <td>
+            @e.NamePlays 
+        </td>
+            name = e.NamePlays;
+        }
+        else
+        {
+            <td></td>
+        }
+        
+        <td>
+            @e.Date.ToString("d")
+        </td>
+        <td>@Resources.Resource.Row  :
+            @e.Row</td><td>@Resources.Resource.Seat  :@e.Seat
+        </td>
+        <td>
+            @e.Price
+        </td>
+        
+            @if (e.Status == 1)
+            {
+                <td>
+            <button OnClick="if (!OnConfirm(@e.Id)) return false;" >@Resources.Resource.CancelOrder</button>
+                    </td>
+            }
+            else{
+                <td>@Resources.Resource.Paid</td>
+            }
+        
+    </tr>
+    }
+    }
+</table>

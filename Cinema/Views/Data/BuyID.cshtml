@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "BuyID";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<h2>@Resources.Resource.YourOrder</h2>
+<table>
+    @if (ViewBag.ListOrder!=null){
+    foreach (int[] e in ViewBag.ListOrder)
+    { 
+    <tr>
+        <td>@Resources.Resource.Row: @e[0]</td><td>@Resources.Resource.Seat: @e[1]</td>
+    </tr>
+    }}
+    else {
+    <tr><td>@Resources.Resource.ErrorOrder</td></tr>
+    } 
+    <tr><td colspan="2">@Resources.Resource.MessageOrder</td></tr>
+    </table>

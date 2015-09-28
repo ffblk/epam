@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="hall">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="category" maxOccurs="unbounded"  >
+          <xsd:complexType >
+            <xsd:sequence>
+              <xsd:element name="row" maxOccurs="unbounded" >
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="seat" maxOccurs="unbounded" type="xsd:integer" />
+                  </xsd:sequence>
+                  <xsd:attribute name='name' type='xsd:integer'/>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+            <xsd:attribute name='name' type='xsd:integer'/>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+
+
+</xsd:schema>
+

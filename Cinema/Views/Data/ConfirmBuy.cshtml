@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "ConfirmBuy";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<h2>@Resources.Resource.PlsConfirm</h2>
+<table>
+    @if (ViewBag.ListOrder!=null){
+    foreach (int[] e in ViewBag.ListOrder)
+    { 
+    <tr>
+        <td>@Resources.Resource.Row  : @e[0]</td><td>@Resources.Resource.Seat  : @e[1]</td>
+    </tr>
+    }
+    <tr><td>@Resources.Resource.TotalCost  :</td><td>@ViewBag.Price</td></tr>
+    <tr><td>
+         <a href="@Url.Action("BuyID", new RouteValueDictionary { { "Date", ViewBag.IdDate } , {"ID", ViewBag.OrderString}})">@Resources.Resource.Confirm </a>
+    </td>
+        <td>           
+            @Html.ActionLink(@Resources.Resource.Cancel, "Index", "Data")
+        </td>
+    </tr>
+    }
+    else {
+    <tr><td>@Resources.Resource.ErrorOrder</td>
+        <td>           
+            @Html.ActionLink(@Resources.Resource.Home, "Index", "Data")
+        </td>
+    </tr>
+    } 
+    
+    </table>

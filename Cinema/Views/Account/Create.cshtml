@@ -1,0 +1,58 @@
+﻿@model Cinema.Models.User
+@{
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>    
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("Create", "Account", FormMethod.Post))
+        {
+            @Html.ValidationSummary(true) 
+            <div class="editor-label">
+                @Resources.Resource.Name
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.name)
+                @Html.ValidationMessageFor(model => model.name)
+            </div> 
+            <div class="editor-label">
+                @Resources.Resource.Password
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.pass)
+                @Html.ValidationMessageFor(model => model.pass)
+            </div>        
+            <div class="editor-label">
+                @Resources.Resource.ConfirmPass
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.passConfirm)
+                @Html.ValidationMessageFor(model => model.passConfirm)
+            </div>            
+            <div class="editor-label">
+                @Resources.Resource.Mail
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.mail)
+                @Html.ValidationMessageFor(model => model.mail)
+            </div>
+            <div class="editor-label">
+                @Resources.Resource.Phone
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.phone)
+                @Html.ValidationMessageFor(model => model.phone)
+            </div>
+            <p>
+                <input type="submit" value= @Resources.Resource.Register />
+            </p> 
+        }
+    </div>
+</body>
+</html>

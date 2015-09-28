@@ -1,0 +1,60 @@
+﻿@using Cinema.Models
+@{
+    ViewBag.Title = "ShowOrders";
+    Layout = "~/Views/_Layout.cshtml";
+    string name ="";
+}
+
+<h2>@Resources.Resource.ShowOrders</h2>
+<script type="text/javascript">
+    function OnConfirm(id) {
+        var ff = id;
+        if (confirm('@Resources.Resource.ConfirmPay')) 
+        {
+            var dummyurl = '@Url.Action("ShowOrders", new {ID = "sdsdsd"})';
+            dummyurl = dummyurl.replace("sdsdsd", id);
+            location.href = dummyurl;
+            return true;}
+        return false;
+}
+</script>
+<table width ="100%">
+    <th>@Resources.Resource.User</th>
+        <th>@Resources.Resource.Film</th>
+        <th>@Resources.Resource.Dates</th>
+        <th>@Resources.Resource.Price</th>
+    <th></th>
+    @foreach(AllOrders e in ViewBag.Orders)
+        {
+            
+    <tr>    
+        @if(name != e.NameUser)    {
+        <td>
+            @e.NameUser <br>
+            @e.Phone <text>  </text>
+            @e.Mail
+        </td>
+            name = e.NameUser;
+        }
+        else
+        {
+            <td></td>
+        }
+        
+        <td>
+            @e.NamePlays<br>
+            @Resources.Resource.Row  :  @e.Row @Resources.Resource.Seat  :  @e.Seat
+        </td>
+        <td>
+            @e.Date.ToString("d")
+        </td>
+        <td>
+            @e.Price
+        </td>
+        <td>
+            <button OnClick="if (!OnConfirm(@e.Id)) return false;" >@Resources.Resource.Paid</button></td>
+
+    </tr>
+    }
+</table>
+            @Html.ActionLink(@Resources.Resource.DownloadReport, "GetTxtReport", "Data")

@@ -1,0 +1,147 @@
+﻿@using Cinema.Models;
+@{
+    ViewBag.Title = "Buy";
+    Layout = "~/Views/_Layout.cshtml";
+    string text;
+}
+
+<h2>@ViewBag.Date.ToString("d")</h2>
+<script type="text/javascript">
+function color(cell,col)
+{  
+    if (col == 1)
+    {   
+        bcolor = cell.style.background;
+        cell.style.background = "#FFDAB9";//цвет фона
+        cell.style.cursor = "pointer";
+    }
+    else
+    {
+        cell.style.background = bcolor;   
+    } 
+}
+</script>
+<script type="text/javascript">//<![CDATA[ 
+    function clicker(id, dat) {
+        if (id == "-1") {
+            $("#label").text("");
+        }
+        else {
+            textmy = $("#label").text();
+            $("#label").text(textmy + id + " - " + dat + ";  ");
+        }   
+    }
+</script>
+<script type="text/javascript">//<![CDATA[ 
+    function urllink(date) {
+        var textmy = ""+$("#label").text();
+        textmy = textmy.replace(/ - /g, ',');
+        textmy = textmy.replace(/;  /g, ';');
+        var dummyurl = '@Url.Action("ConfirmBuy", new {Date = "abc", ID = "sdsdsd"})';
+        var path = dummyurl.replace("abc", date);
+        var path1 = path.replace("sdsdsd", textmy);        
+        location.href = path1;
+    }
+</script>
+<table border="0" width ="100%" >
+    <tr>
+        <td rowspan="4">
+            <img src="/images/pictures/@ViewBag.Detail.LinkPic" class="tdPic" title="Описание заявки" /> 
+        </td>
+        <td colspan="2" >
+            <h3>@ViewBag.Play.Name</h3>
+        </td>        
+    </tr>    
+        <tr> 
+            <td width ="80">
+                @Resources.Resource.Genres
+            </td> 
+            <td>
+                @foreach (string e in ViewBag.Play.Genres)
+                {
+                    @e<br> 
+                }
+            </td>           
+        </tr>  
+   <tr>
+       <td>
+                @Resources.Resource.Directors
+            </td>
+         <td>
+                @foreach (string e in ViewBag.Play.Authors)
+                {
+                    @e <br> 
+                }
+            </td>  
+       </tr>
+    <tr>
+            <td colspan="2">
+                <p>@ViewBag.Detail.Description</p>
+            </td>
+            </tr>     
+</table>
+<br><br>
+<label id="label1" >@Resources.Resource.SeatsOrder</label><label id="label" ></label><br><br>
+<table>
+    <tr>
+        <td width="50" onMouseOver="color(this,1)" 
+            onMouseOut="color(this,2)" 
+            onclick="urllink(@ViewBag.DateID)">
+            @Resources.Resource.Buy</td>
+        <td width="50" onMouseOver="color(this,1)" onMouseOut="color(this,2)" onclick ="clicker(-1, -1)">@Resources.Resource.Clear
+        </td>
+    </tr>
+</table>
+@{
+    int rows = ViewBag.Hall.Count;  
+    int i;
+    int j;    
+    var bcolor = "#fff";
+    var titlePrice = 0;
+    int col = 0;
+
+    }
+<table>
+    <tr><td>
+    @for(i = 0; i< rows; i++)    {
+        
+        <table align="center" text-align="center"> 
+        <tr height="20">
+            
+            @for(j = 0; j< ViewBag.Hall[i].Count; j++)    
+                {
+                if(ViewBag.Hall[i][j].Category != -1)
+                {
+                    if (ViewBag.Hall[i][j].Status == 0) 
+                    {
+                        titlePrice = Funcs.IdPrice[ViewBag.Hall[i][j].Category];
+                        col = 240 - (ViewBag.Hall[i][j].Category * 30);
+                        <td onMouseOver="color(this,1)" onMouseOut="color(this,2)"  width="20" onclick ="clicker(@ViewBag.Hall[i][j].Row,@ViewBag.Hall[i][j].Place)" title=@titlePrice style ="background: rgb(220,@col,255);"><div>
+                        @ViewBag.Hall[i][j].Place</div></td>
+                    }  
+                    else {
+                    if(ViewBag.Hall[i][j].Status == 1 ) 
+                    {                       
+                        bcolor = "#BEBEBE";
+                    }
+                    else if (ViewBag.Hall[i][j].Status == 2) 
+                    { 
+                        bcolor = "#696969"; 
+                    } 
+                    <td onMouseOver="color(this,1)" onMouseOut="color(this,2)" bgcolor=@bcolor width="20" ><div>
+                        @ViewBag.Hall[i][j].Place</div></td>  
+                }           
+                }  
+                else
+                {
+                    <td width="20"></td>
+                }
+            }        
+         </tr>   
+            </table>        
+    }
+    </td>
+        </tr>
+</table>
+
+

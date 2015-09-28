@@ -1,0 +1,110 @@
+﻿@using Cinema.Models;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_Layout.cshtml";
+}
+<h2>@Resources.Resource.Films</h2>
+    <table border="0" width ="100%">
+    <tr>
+        <th>@Resources.Resource.Film</th>
+        <th>@Resources.Resource.Genres</th>
+        <th>@Resources.Resource.Directors</th>
+        <th>@Resources.Resource.Dates</th>
+    </tr> 
+    @foreach (Play p in ViewBag.Plays) 
+    {    
+        <tr>
+        @if (p != ViewBag.SelPurch)
+        {
+            <td>
+                <div><a class="openDialog" data-dialog-id="infoDialog" data-dialog-title="@p.Name"
+               href="Data/Details/@p.ID" data-dialog-width ="800">@p.Name</a></div>   
+            </td>
+            <td>
+                @foreach ( string e in p.Genres)
+                {
+                    @e<br> 
+                }
+            </td>
+            <td>
+                @foreach ( string e in p.Authors)
+                {
+                    @e <br> 
+                }
+            </td>
+            <td>    
+                @foreach ( DateTime e in p.Dates)
+                {                
+                    <a href="@Url.Action("Buy", new RouteValueDictionary {  {"Id", p.ID}, { "Date", e } })">@e.ToString("d")</a><br> 
+                }
+            </td>        
+            if ((Session["role"] as int?) == 1)
+            {
+                <td>
+                    <a href="@Url.Action("Index", new RouteValueDictionary { { "id", p.ID } })"> <img src="/images/edit.bmp" alt="Редактировать" /> </a>
+                    <a href="@Url.Action("Del", new RouteValueDictionary { { "id", p.ID } })"> <img src="/images/delete.bmp" alt="Удалить" /> </a>
+                </td>
+            }
+        }
+        else
+        {
+            using (Html.BeginForm("Edit", "Data", FormMethod.Post))
+            {
+                <td>
+                    <input type="hidden" name="pId" value="@p.ID"/>
+                    <input type="text" name="pName" value="@p.Name"/>
+                </td>
+                <td>
+                    @foreach ( string e in p.Genres)
+                    {              
+                        <input type="text" name="pPrice" value="@e"/>
+                        <br> 
+                    }
+                </td>
+                <td>
+                    @foreach ( string e in p.Authors)
+                    {                
+                        <input type="text" name="pCount" value="@e"/>
+                        <br>
+                    }
+                </td>
+                <td>
+                    @foreach ( DateTime e in p.Dates)
+                    {                  
+                        <input type="text" name="pCount" value="@e"/>
+                        <br>
+                    }
+                </td>
+                <td>            
+                    <input type="submit" value="Cохранить" />
+                </td>
+                <td>
+                    @Html.ActionLink("Отмена", "Index", new RouteValueDictionary { {"id",null}})
+                </td>
+            }
+        }
+        </tr>    
+    } 
+    
+    @if((Session["role"]  as int?) == 1){
+        <tr>
+            @using (Html.BeginForm("Add", "Data", FormMethod.Post)) 
+            {
+                <td>
+                    <input type="text" name="pName" />
+                </td>
+                <td>
+                    <input type="text" name="pPrice" />
+                </td>
+                <td>
+                    <input type="text" name="pCount" />
+                </td>
+                <td>
+                    <img src="/images/add.bmp" alt="Добавить" onclick="document.forms[0].submit() "/>
+                </td>
+            }
+        </tr>  
+    }
+        </table>
+    
+
